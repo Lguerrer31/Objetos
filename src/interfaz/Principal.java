@@ -9,11 +9,17 @@ package interfaz;
  *
  * @author lguerrer17
  */
+
+import clases.Persona;
+
 public class Principal extends javax.swing.JFrame {
 
     /**
      * Creates new form Principal
      */
+    
+    Persona v[] = new Persona[5];
+    
     public Principal() {
         initComponents();
     }
@@ -85,6 +91,11 @@ public class Principal extends javax.swing.JFrame {
 
         cmdGuardar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         cmdGuardar.setText("Guardar");
+        cmdGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdGuardarActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         cmdMostrar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -126,6 +137,20 @@ public class Principal extends javax.swing.JFrame {
     private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdentificacionActionPerformed
+
+    private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
+        // TODO add your handling code here:
+        Persona p;
+        long identificacion;
+        String primer_nombre, primer_apellido;
+        
+        identificacion = Long.parseLong(txtIdentificacion.getText());
+        primer_nombre = txtPnombre.getText();
+        primer_apellido = txtPapellido.getText();
+        
+        p = new persona(identificacion, primer_nombre, primer_apelliido);
+        
+    }//GEN-LAST:event_cmdGuardarActionPerformed
 
     /**
      * @param args the command line arguments
