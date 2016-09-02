@@ -9,7 +9,7 @@ package interfaz;
  *
  * @author lguerrer17
  */
-import clases.Persona;
+import clases.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -177,7 +177,7 @@ public class Principal extends javax.swing.JFrame {
 
         p = new Persona(identificacion, primer_nombre, primer_apellido);
         v.add(p);
-        JOptionPane.showMessageDialog(this, "Persona agregada exitosamente");
+        Helper.mensaje(this, "Persona agregada exitosamente", "Información", 1);
 
         txtIdentificacion.setText("");
         txtPapellido.setText("");
@@ -240,7 +240,7 @@ public class Principal extends javax.swing.JFrame {
     private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
         // TODO add your handling code here:
         int op;
-        op = JOptionPane.showConfirmDialog(this, "¿Seguro que desea borrar todos los objetos?", "Pregunta", JOptionPane.YES_NO_OPTION);
+        op = Helper.mensaje(this, "¿Seguro que desea borrar todos los objetos?", "Pregunta", 3);
         if (op == JOptionPane.YES_OPTION) {
             v.clear();
             txtIdentificacion.setText("");
