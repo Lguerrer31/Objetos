@@ -9,17 +9,17 @@ package interfaz;
  *
  * @author lguerrer17
  */
-
 import clases.Persona;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
 
     /**
      * Creates new form Principal
      */
-    
-    Persona v[] = new Persona[5];
-    
+    ArrayList<Persona> v = new ArrayList();
+
     public Principal() {
         initComponents();
     }
@@ -55,7 +55,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la persona", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la persona", 0, 0, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -76,17 +76,32 @@ public class Principal extends javax.swing.JFrame {
                 txtIdentificacionActionPerformed(evt);
             }
         });
+        txtIdentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdentificacionKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 60, -1));
 
         txtPnombre.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtPnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPnombreKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtPnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 60, -1));
 
         txtPapellido.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtPapellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPapellidoKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtPapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 60, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 170, 120));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", 0, 0, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdGuardar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -100,18 +115,30 @@ public class Principal extends javax.swing.JFrame {
 
         cmdMostrar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         cmdMostrar.setText("Mostrar");
+        cmdMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdMostrarActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         cmdLimpiar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         cmdLimpiar.setText("Limpiar");
+        cmdLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLimpiarActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 130, 120));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Personas ingresadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Personas ingresadas", 0, 0, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtPingresadas.setEditable(false);
         txtPingresadas.setColumns(20);
+        txtPingresadas.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtPingresadas.setRows(5);
         jScrollPane1.setViewportView(txtPingresadas);
 
@@ -143,14 +170,86 @@ public class Principal extends javax.swing.JFrame {
         Persona p;
         long identificacion;
         String primer_nombre, primer_apellido;
-        
+
         identificacion = Long.parseLong(txtIdentificacion.getText());
         primer_nombre = txtPnombre.getText();
         primer_apellido = txtPapellido.getText();
-        
-        p = new persona(identificacion, primer_nombre, primer_apelliido);
-        
+
+        p = new Persona(identificacion, primer_nombre, primer_apellido);
+        v.add(p);
+        JOptionPane.showMessageDialog(this, "Persona agregada exitosamente");
+
+        txtIdentificacion.setText("");
+        txtPapellido.setText("");
+        txtPnombre.setText("");
+        txtIdentificacion.requestFocusInWindow();
+
     }//GEN-LAST:event_cmdGuardarActionPerformed
+
+    private void txtIdentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificacionKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdentificacionKeyTyped
+
+    private void txtPnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPnombreKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPnombreKeyTyped
+
+    private void txtPapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPapellidoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPapellidoKeyTyped
+
+    private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
+        // TODO add your handling code here:
+        String aux;
+        if (v.isEmpty()) {
+            txtPingresadas.append("No hay personas que mostrar");
+            txtIdentificacion.requestFocusInWindow();
+        } else {
+            for (int i = 0; i < v.size(); i++) {
+                aux = "Persona No. " + (i + 1) + "\n"
+                        + "Identificación: " + v.get(i).getIdentificacion() + "\n"
+                        + "Primer nombre: " + v.get(i).getPrimer_nombre() + "\n"
+                        + "Primer apellido: " + v.get(i).getPrimer_apellido() + "\n\n";
+                txtPingresadas.append(aux);
+            }
+        }
+
+    }//GEN-LAST:event_cmdMostrarActionPerformed
+
+    private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
+        // TODO add your handling code here:
+        int op;
+        op = JOptionPane.showConfirmDialog(this, "¿Seguro que desea borrar todos los objetos?", "Pregunta", JOptionPane.YES_NO_OPTION);
+        if (op == JOptionPane.YES_OPTION) {
+            v.clear();
+            txtIdentificacion.setText("");
+            txtPapellido.setText("");
+            txtPnombre.setText("");
+            txtPingresadas.setText("");
+            txtIdentificacion.requestFocusInWindow();
+        }
+    }//GEN-LAST:event_cmdLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
