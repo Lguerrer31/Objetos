@@ -19,7 +19,7 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     ArrayList<Persona> v = new ArrayList();
-
+    
     public Principal() {
         initComponents();
     }
@@ -40,11 +40,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtIdentificacion = new javax.swing.JTextField();
         txtPnombre = new javax.swing.JTextField();
+        lblSexo = new javax.swing.JLabel();
         txtPapellido = new javax.swing.JTextField();
+        cmbSexo = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         cmdGuardar = new javax.swing.JButton();
         cmdMostrar = new javax.swing.JButton();
-        cmdLimpiar = new javax.swing.JButton();
+        cmdLmpiar = new javax.swing.JButton();
+        cmdListadomujeres = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtPingresadas = new javax.swing.JTextArea();
@@ -55,7 +58,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la persona", 0, 0, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la persona", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -91,6 +94,10 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel2.add(txtPnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 60, -1));
 
+        lblSexo.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblSexo.setText("Sexo");
+        jPanel2.add(lblSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
         txtPapellido.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtPapellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -99,9 +106,13 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel2.add(txtPapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 60, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 170, 120));
+        cmbSexo.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "Indefinido" }));
+        jPanel2.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 80, -1));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", 0, 0, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 170, 140));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdGuardar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -111,7 +122,7 @@ public class Principal extends javax.swing.JFrame {
                 cmdGuardarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         cmdMostrar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         cmdMostrar.setText("Mostrar");
@@ -120,20 +131,29 @@ public class Principal extends javax.swing.JFrame {
                 cmdMostrarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jPanel3.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
-        cmdLimpiar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        cmdLimpiar.setText("Limpiar");
-        cmdLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        cmdLmpiar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        cmdLmpiar.setText("Limpiar");
+        cmdLmpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdLimpiarActionPerformed(evt);
+                cmdLmpiarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        jPanel3.add(cmdLmpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 130, 120));
+        cmdListadomujeres.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        cmdListadomujeres.setText("Listado de mujeres");
+        cmdListadomujeres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdListadomujeresActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cmdListadomujeres, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Personas ingresadas", 0, 0, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 150, 150));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Personas ingresadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtPingresadas.setEditable(false);
@@ -142,9 +162,9 @@ public class Principal extends javax.swing.JFrame {
         txtPingresadas.setRows(5);
         jScrollPane1.setViewportView(txtPingresadas);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, -1));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 290, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 330, 130));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 330, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,10 +174,10 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(416, 367));
+        setSize(new java.awt.Dimension(416, 382));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -170,18 +190,20 @@ public class Principal extends javax.swing.JFrame {
         Persona p;
         long identificacion;
         String primer_nombre, primer_apellido;
-
+        
         identificacion = Long.parseLong(txtIdentificacion.getText());
         primer_nombre = txtPnombre.getText();
         primer_apellido = txtPapellido.getText();
-
-        p = new Persona(identificacion, primer_nombre, primer_apellido);
+        String sexo = cmbSexo.getSelectedItem().toString();
+        
+        p = new Persona(identificacion, primer_nombre, primer_apellido, sexo);
         v.add(p);
         Helper.mensaje(this, "Persona agregada exitosamente", "Información", 1);
-
+        
         txtIdentificacion.setText("");
         txtPapellido.setText("");
         txtPnombre.setText("");
+        cmbSexo.setSelectedItem(0);
         txtIdentificacion.requestFocusInWindow();
 
     }//GEN-LAST:event_cmdGuardarActionPerformed
@@ -189,10 +211,10 @@ public class Principal extends javax.swing.JFrame {
     private void txtIdentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificacionKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-
+        
         if (!Character.isDigit(c)) {
             getToolkit().beep();
-
+            
             evt.consume();
         }
     }//GEN-LAST:event_txtIdentificacionKeyTyped
@@ -200,28 +222,18 @@ public class Principal extends javax.swing.JFrame {
     private void txtPnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPnombreKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-
+        
         if (!Character.isAlphabetic(c)) {
             getToolkit().beep();
-
+            
             evt.consume();
         }
     }//GEN-LAST:event_txtPnombreKeyTyped
 
-    private void txtPapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPapellidoKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if (!Character.isAlphabetic(c)) {
-            getToolkit().beep();
-
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtPapellidoKeyTyped
-
     private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
         // TODO add your handling code here:
         String aux;
+        txtPingresadas.setText("");
         if (v.isEmpty()) {
             txtPingresadas.append("No hay personas que mostrar");
             txtIdentificacion.requestFocusInWindow();
@@ -230,14 +242,15 @@ public class Principal extends javax.swing.JFrame {
                 aux = "Persona No. " + (i + 1) + "\n"
                         + "Identificación: " + v.get(i).getIdentificacion() + "\n"
                         + "Primer nombre: " + v.get(i).getPrimer_nombre() + "\n"
-                        + "Primer apellido: " + v.get(i).getPrimer_apellido() + "\n\n";
+                        + "Primer apellido: " + v.get(i).getPrimer_apellido() + "\n"
+                        + "Sexo: " + v.get(i).getSexo() + "\n";
                 txtPingresadas.append(aux);
             }
         }
 
     }//GEN-LAST:event_cmdMostrarActionPerformed
 
-    private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
+    private void cmdLmpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLmpiarActionPerformed
         // TODO add your handling code here:
         int op;
         op = Helper.mensaje(this, "¿Seguro que desea borrar todos los objetos?", "Pregunta", 3);
@@ -247,9 +260,35 @@ public class Principal extends javax.swing.JFrame {
             txtPapellido.setText("");
             txtPnombre.setText("");
             txtPingresadas.setText("");
+            cmbSexo.setSelectedItem(0);
             txtIdentificacion.requestFocusInWindow();
         }
-    }//GEN-LAST:event_cmdLimpiarActionPerformed
+    }//GEN-LAST:event_cmdLmpiarActionPerformed
+
+    private void txtPapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPapellidoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPapellidoKeyTyped
+
+    private void cmdListadomujeresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdListadomujeresActionPerformed
+        // TODO add your handling code here:
+        String aux;
+        txtPingresadas.setText("");
+        if (v.isEmpty()) {
+            txtPingresadas.append("No hay personas que mostrar");
+            txtIdentificacion.requestFocusInWindow();
+        } else {
+            for (int i = 0; i < v.size(); i++) {
+                if (v.get(i).getSexo().equalsIgnoreCase("Femenino")) {
+                    aux = "Persona No. " + (i + 1) + "\n"
+                            + "Identificación: " + v.get(i).getIdentificacion() + "\n"
+                            + "Primer nombre: " + v.get(i).getPrimer_nombre() + "\n"
+                            + "Primer apellido: " + v.get(i).getPrimer_apellido() + "\n"
+                            + "Sexo: " + v.get(i).getSexo();
+                    txtPingresadas.append(aux);
+                }
+            }
+        }
+    }//GEN-LAST:event_cmdListadomujeresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,8 +326,10 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbSexo;
     private javax.swing.JButton cmdGuardar;
-    private javax.swing.JButton cmdLimpiar;
+    private javax.swing.JButton cmdListadomujeres;
+    private javax.swing.JButton cmdLmpiar;
     private javax.swing.JButton cmdMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -298,6 +339,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblSexo;
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtPapellido;
     private javax.swing.JTextArea txtPingresadas;
